@@ -43,7 +43,7 @@ kubectl apply -f .
 
 to stop the application run the following:
 ```bash
-kubectl stop -f .
+kubectl delete -f .
 ```
 
 ## 9. Testing <a name="testing"></a> 
