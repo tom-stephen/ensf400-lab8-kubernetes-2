@@ -10,7 +10,8 @@ This repository contains YAML files for deploying NGINX as a reverse proxy and t
 5. [Application Deployments](#application-deployments)
 6. [Application Services](#application-services)
 7. [Application Ingresses](#application-ingresses)
-8. [Testing](#testing)
+8. [Startign the application](#startign-the-application)
+9. [Testing](#testing)
 
 ## 1. NGINX Deployment <a name="nginx-deployment"></a>
 The NGINX Deployment (`nginx-dep.yaml`) creates a replica set of NGINX pods with 5 replicas. It uses the NGINX base image version 1.14.2 and exposes port 8080.
@@ -33,7 +34,19 @@ Service YAML files (`app-1-svc.yaml` and `app-2-svc.yaml`) define ClusterIP serv
 ## 7. Application Ingresses <a name="application-ingresses"></a>
 Ingress YAML files (`app-1-ingress.yaml` and `app-2-ingress.yaml`) configure Ingress resources to redirect requests to path `/app` to the backend services of `app-1` and `app-2`, respectively.
 
-## 8. Testing <a name="testing"></a>
+## 8. Startign the application <a name="startign-the-applicatio"></a>
+to start tthe application you should go to the assignment diecotry and once in that directory run the following to start the application.
+
+```bash
+kubectl apply -f .
+```
+
+to stop the application run the following:
+```bash
+kubectl stop -f .
+```
+
+## 9. Testing <a name="testing"></a> 
 To test the deployment, you can use `curl` to send requests to the NGINX and application services. Here are some sample commands:
 
 ###   <span style="color:red">NOTE: This does not work. not sure why yet.</span>
