@@ -5,8 +5,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-  targerPort: 3000
-    protocol: TCP
+  - protocol: TCP 
+    port: 8080
+    targetPort: 3000
+    
   selector:
     app: app-1

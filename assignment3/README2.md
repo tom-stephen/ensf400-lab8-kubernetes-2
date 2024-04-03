@@ -37,6 +37,15 @@ Ingress YAML files (`app-1-ingress.yaml` and `app-2-ingress.yaml`) configure Ing
 ## 8. Startign the application <a name="startign-the-applicatio"></a>
 to start tthe application you should go to the assignment diecotry and once in that directory run the following to start the application.
 
+if you areusing mini kube make sure to start it
+```bash
+minikube start
+```
+you also need to add ingress compatability 
+```bash
+minikube addons enable ingress
+```
+
 ```bash
 kubectl apply -f .
 ```
