@@ -63,6 +63,11 @@ To test the deployment, you can use `curl` to send requests to the NGINX and app
 curl curl http://$(minikube ip)/
 ```
 
+in this directory there is also a bash script that curls it 100 times and shows the output of percentage of the requests that are directed to app 1 and to app 2.
+```bash
+./text.sh
+```
+
 ### Expected out come
 Below if the out come that i got when running this on my computer.
 ```bash
