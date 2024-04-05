@@ -20,19 +20,19 @@ The NGINX Deployment (`nginx-dep.yaml`) creates a replica set of NGINX pods with
 The NGINX ConfigMap (`nginx-configmap.yaml`) defines a configuration file (`nginx.conf`) that specifies upstream servers and location directives for proxying requests.
 
 ## 3. NGINX Service <a name="nginx-service"></a>
-The NGINX Service (`nginx-svc.yaml`) creates a ClusterIP service named `nginx-svc` that exposes port 8080 and selects the NGINX pods using label selectors.
+The NGINX Service (`nginx-svc.yaml`) creates a ClusterIP service named `nginx-svc` that exposes port 80 and selects the NGINX pods using label selectors.
 
 ## 4. NGINX Ingress <a name="nginx-ingress"></a>
-The NGINX Ingress (`nginx-ingress.yaml`) configures an Ingress resource to redirect requests to path `/nginx` to the NGINX service (`nginx-svc`).
+The NGINX Ingress (`nginx-ingress.yaml`) configures an Ingress resource to redirect requests to path `/` to the NGINX service (`nginx-svc`).
 
 ## 5. Application Deployments <a name="application-deployments"></a>
 Deployment YAML files (`app-1-dep.yaml` and `app-2-dep.yaml`) define `app-1` and `app-2`, respectively. They use pre-built Docker images (`ghcr.io/denoslab/ensf400-sample-app:v1` and `ghcr.io/denoslab/ensf400-sample-app:v2`).
 
 ## 6. Application Services <a name="application-services"></a>
-Service YAML files (`app-1-svc.yaml` and `app-2-svc.yaml`) define ClusterIP services for `app-1` and `app-2`, respectively, exposing port 8080.
+Service YAML files (`app-1-svc.yaml` and `app-2-svc.yaml`) define ClusterIP services for `app-1` and `app-2`, respectively, exposing port 8080 from container port 3000.
 
 ## 7. Application Ingresses <a name="application-ingresses"></a>
-Ingress YAML files (`app-1-ingress.yaml` and `app-2-ingress.yaml`) configure Ingress resources to redirect requests to path `/app` to the backend services of `app-1` and `app-2`, respectively.
+Ingress YAML files (`app-1-ingress.yaml` and `app-2-ingress.yaml`) configure Ingress resources to redirect requests to path `/` to the backend services of `app-1` and `app-2`, respectively.
 
 ## 8. Startign the application <a name="startign-the-applicatio"></a>
 to start tthe application you should go to the assignment diecotry and once in that directory run the following to start the application.
@@ -58,8 +58,21 @@ kubectl delete -f .
 ## 9. Testing <a name="testing"></a> 
 To test the deployment, you can use `curl` to send requests to the NGINX and application services. Here are some sample commands:
 
-###   <span style="color:red">NOTE: This does not work. not sure why yet.</span>
 ### Testing NGINX Ingress:
 ```bash
 curl curl http://$(minikube ip)/
+```
+
+### Expected out come
+Below if the out come that i got when running this on my computer.
+```bash
+Hello World from [app-1-dep-65c994b56f-tgnbp]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-1-dep-65c994b56f-tgnbp]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-2-dep-54847874cd-lslr2]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-1-dep-65c994b56f-tgnbp]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-2-dep-54847874cd-lslr2]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-1-dep-65c994b56f-tgnbp]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-1-dep-54847874cd-lslr2]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-1-dep-65c994b56f-tgnbp]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
+Hello World from [app-2-dep-54847874cd-lslr2]!@tom-stephen ➜ /workspaces/ensf400-lab8-kubernetes-2/assignment3 (assignment_3) $ curl http://192.168.58.2/
 ```
