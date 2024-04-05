@@ -61,4 +61,5 @@ To test the deployment, you can use `curl` to send requests to the NGINX and app
 ###   <span style="color:red">NOTE: This does not work. not sure why yet.</span>
 ### Testing NGINX Ingress:
 ```bash
-curl http://<ingress-host>/nginx
+curl curl http://$(minikube ip)/
+```
