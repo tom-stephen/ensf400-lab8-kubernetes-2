@@ -37,7 +37,7 @@ Ingress YAML files (`app-1-ingress.yaml` and `app-2-ingress.yaml`) configure Ing
 ## 8. Startign the application <a name="startign-the-applicatio"></a>
 to start tthe application you should go to the assignment diecotry and once in that directory run the following to start the application.
 
-if you areusing mini kube make sure to start it
+if you are using minikube make sure to start it
 ```bash
 minikube start
 ```
@@ -45,7 +45,7 @@ you also need to add ingress compatability
 ```bash
 minikube addons enable ingress
 ```
-
+After that you can apply the kuberneties files
 ```bash
 kubectl apply -f .
 ```
@@ -60,12 +60,19 @@ To test the deployment, you can use `curl` to send requests to the NGINX and app
 
 ### Testing NGINX Ingress:
 ```bash
-curl curl http://$(minikube ip)/
+curl http://$(minikube ip)/
 ```
 
-in this directory there is also a bash script that curls it 100 times and shows the output of percentage of the requests that are directed to app 1 and to app 2.
+in this directory there is also a bash script that curls it 100 times and shows the output of percentage of the requests that are directed to app 1 and to app 2. Note that this will not return exactly 70% and 30% becasue it is not a massive sample size. the larger the sample size the more acufrate the results would be. below is an example of the out put i got. 
+
+#### To Run the Script:
 ```bash
-./text.sh
+./test.sh
+```
+#### My Output:
+```bash
+Percentage of responses from App 1: 84%
+Percentage of responses from App 2: 16%
 ```
 
 ### Expected out come

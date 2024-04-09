@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: app-1-ingress
   annotations:
-    nginx.ingress.kubernetes.io/canary: "false"
+    nginx.ingress.kubernetes.io/canary: "true"
     nginx.ingress.kubernetes.io/canary-weight: "70"
 spec:
   rules:
   - http:
       paths:
-      - path: /app
+      - path: /
         pathType: Prefix
         backend:
           service:
