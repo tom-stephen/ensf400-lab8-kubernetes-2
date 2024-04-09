@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: nginx-svc
   labels:
+    app: nginx
     run: my-nginx
 spec:
   type: ClusterIP
@@ -10,4 +11,5 @@ spec:
   - port: 80
     protocol: TCP
   selector:
+    app: nginx
     run: my-nginx
